@@ -14,6 +14,39 @@ var corral;
 
 var jugador;
 
+var terreno = new Array();
+for(var i = 0; i<10;i++)
+{
+	terreno[i] = new Array();
+}
+
+function crear_terreno() {
+	for (fila = 0; fila < 10; fila ++) {
+		for (columna = 0; columna < 10; columna ++) {
+			terreno[fila][columna] = Math.floor(Math.random()*3);
+		}
+	}
+}
+
+function pintar_terreno() {
+	var t;
+	for (fila = 0; fila < 10; fila ++) {
+		for (columna = 0; columna < 10; columna ++) {
+			t = terreno[fila][columna];
+			if (t == 0) {
+				t.fillStyle = "#ADFF2F";
+				};
+			if (t == 1) {
+				t.fillStyle = "#CD853F";
+				};
+			if (t == 2) {
+				t.fillStyle = "#DDA0DD";
+				};
+		pintor.fillRect(80*columna,60*fila,80,60)
+		}
+	}
+}
+
 function Oveja() {
 	this.x = Math.random()*800;
 	this.y = Math.random()*600;
@@ -116,15 +149,7 @@ Lobo.prototype.actualizar = function lobo_actualizar(dt) {
 
 function Jugador() {
 	this.x = Math.random()*800;
-	this.y = Math.random()*600;
-}
-
-Jugador.prototype.pintar = function jugador_pintar() {
-	pintor.fillStyle = "#f80";
-	pintor.fillRect(this.x - 12.5, this.y - 12.5, 25, 25);
-};
-
-Jugador.prototype.entrada = function jugador_entrada(keyCode) {
+	this.y = Math.random(unction jugador_entrada(keyCode) {
 	if(keyCode == 87) {
 		this.y = this.y - 25;
 	}
@@ -207,6 +232,7 @@ function jugar() {
 
 function actualizar() {
 	var dt = 1000/25;
+	crear_terreno();
 
 	ovejas.forEach(function (oveja) {
 		oveja.actualizar(dt);
@@ -217,9 +243,9 @@ function actualizar() {
 	});
 }
 
+
 function pintar() {
-	pintor.fillStyle = "pink";
-	pintor.fillRect(0, 0, 800, 600);
+	pintar_terreno();
 
 	corral.pintar();
 
@@ -251,3 +277,12 @@ window.addEventListener("keydown", function(event) {
 inicializar();
 
 window.setInterval(jugar, 25);
+)*600;
+}
+
+Jugador.prototype.pintar = function jugador_pintar() {
+	pintor.fillStyle = "#f80";
+	pintor.fillRect(this.x - 12.5, this.y - 12.5, 25, 25);
+};
+
+Jugador.prototype.entrada = f
