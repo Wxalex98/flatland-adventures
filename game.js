@@ -9,12 +9,22 @@ var y = 240;
 var lobos = [];
 
 var ovejas = [];
+var oveja_img;
 
 var corral;
 
 var jugador;
 
 var terreno;
+
+function get_img(src, callback) {
+	var img = new Image();
+	if(callback) {
+		img.addEventListener('load', callback.bind(this, img));
+	}
+	img.src = src;
+	return img;
+}
 
 function Terreno() {
 	this.mat = [];
@@ -55,8 +65,7 @@ function Oveja() {
 }
 
 Oveja.prototype.pintar = function oveja_pintar() {
-	pintor.fillStyle = "white";
-	pintor.fillRect(this.x - 7.5, this.y - 7.5, 15, 15);
+	pintor.drawImage(oveja_img, this.x, this.y);
 };
 
 Oveja.prototype.actualizar = function oveja_actualizar(dt) {
@@ -208,6 +217,8 @@ Corral.prototype.esta_dentro = function corral_esta_dentro(animal) {
 };
 
 function inicializar() {
+	oveja_img = get_img('images/oveja.png');
+
 	var i;
 
 	terreno = new Terreno();
