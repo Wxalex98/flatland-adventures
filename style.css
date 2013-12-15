@@ -1,0 +1,19 @@
+body{
+	background-image: url("images/bluesky.gif");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: right bottom;
+}
+h1{
+	text-align:center;
+	text-align:top;
+	font-weight: bold;
+	font-size: 40px;
+	font-family: serif;
+}
+#box {
+	position: absolute;
+	margin-right: 250px;
+	margin-left: 250px;
+	vertical-align: middle;
+}
